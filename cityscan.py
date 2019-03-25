@@ -1,6 +1,6 @@
 import os
 
-options = {'port':'80','list_of_diapasons':'~/ips','output':'~/scan'}
+options = {'port':'8000','list_of_diapasons':'/home/scarlet/ips','output':'/home/scarlet/scan'}
 options_ = ['port','list_of_diapasons','output']
 def main():
 	print('\n\n\033[96m===>\033[00m \033[92m$CITYSCAN\033[00m \033[96m<===\033[00m')
@@ -11,6 +11,7 @@ def main():
 			print('* \033[94mshow options\033[00m')
 			print('* \033[94mset\033[00m [attribute] [value]')
 			print('* \033[94mscan\033[00m')
+			print('* \033[94mexit\033[00m')
 		elif command == "show options" or command == "show options ":
 			print('\033[34menter \'set\' to change options\033[00m')
 			print('\033[95mport:\033[00m ' + options['port'])
@@ -33,8 +34,16 @@ def main():
 				print('incorrect input')
 			else:
 				options[argv[1]] = argv[2]
+		
+
 		elif command == 'scan' or command == 'scan ':
 			os.system('masscan -p' + options['port'] + ' -iL ' + options['list_of_diapasons'] + ' -oL ' + options['output']) 					
+		
+		
+		elif command == 'exit' or command == 'exit ':
+			exit(0)
+		
+
 		else:
 			print('\033[34menter \'help\' to show list of commands\033[00m')
 main()
